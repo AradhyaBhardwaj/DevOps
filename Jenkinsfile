@@ -13,13 +13,13 @@ pipeline {
 
         stage('Maven Version') {
             steps {
-                bat 'mvn -version'
+                bat '"C:\\Program Files\\apache-maven-3.10.0\\bin\\mvn.cmd" -version'
             }
         }
 
         stage('Maven Build') {
             steps {
-                bat 'mvn -f MavenHelloWorld/pom.xml clean package'
+                bat '"C:\\Program Files\\apache-maven-3.10.0\\bin\\mvn.cmd" -f MavenHelloWorld\\pom.xml clean package'
             }
         }
 
