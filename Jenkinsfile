@@ -2,15 +2,23 @@ pipeline {
     agent any
 
     stages {
-        stage('Check Python') {
+
+        stage('Python Build') {
             steps {
                 bat '"C:\\Users\\aradh\\AppData\\Local\\Python\\bin\\python.exe" --version'
+                bat '"C:\\Users\\aradh\\AppData\\Local\\Python\\bin\\python.exe" HelloWorld.py'
             }
         }
 
-        stage('Run Hello World') {
+        stage('Maven Version') {
             steps {
-                bat '"C:\\Users\\aradh\\AppData\\Local\\Python\\bin\\python.exe" HelloWorld.py'
+                bat 'mvn -version'
+            }
+        }
+
+        stage('Maven Build') {
+            steps {
+                bat 'mvn -f MavenHelloWorld/pom.xml clean package'
             }
         }
     }
