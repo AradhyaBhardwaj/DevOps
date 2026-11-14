@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
 
@@ -19,6 +20,12 @@ pipeline {
         stage('Maven Build') {
             steps {
                 bat 'mvn -f MavenHelloWorld/pom.xml clean package'
+            }
+        }
+
+        stage('Run JAR') {
+            steps {
+                bat 'java -jar MavenHelloWorld\\target\\maven-hello-world-1.0.jar'
             }
         }
     }
