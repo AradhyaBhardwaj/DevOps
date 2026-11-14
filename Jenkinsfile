@@ -2,6 +2,10 @@
 pipeline {
     agent any
 
+    environment {
+        JAVA_HOME = 'C:\\Program Files\\Java\\jdk-21.0.12.1'
+    }
+
     stages {
 
         stage('Python Build') {
@@ -28,7 +32,7 @@ pipeline {
             steps {
                 echo 'Building Java Maven Project'
 
-                bat '"C:\\Program Files\\apache-maven-3.10.0\\bin\\mvn.cmd" -f MavenHelloWorld\\pom.xml clean package'
+                bat '"C:\\Program Files\\apache-maven-3.10.0\\bin\\mvn.cmd" -f "Maven Java\\pom.xml" clean package'
             }
         }
 
@@ -36,7 +40,7 @@ pipeline {
             steps {
                 echo 'Executing Generated JAR'
 
-                bat 'java -jar MavenHelloWorld\\target\\maven-hello-world-1.0.jar'
+                bat '"%JAVA_HOME%\\bin\\java.exe" -jar "Maven Java\\target\\maven-hello-world-1.0.jar"'
             }
         }
     }
