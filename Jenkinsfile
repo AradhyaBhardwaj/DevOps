@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage('Check Python') {
             steps {
-                bat 'python --version'
+                bat '"C:\\Users\\aradh\\AppData\\Local\\Python\\bin\\python.exe" --version'
             }
         }
 
         stage('Run Hello World') {
             steps {
-                bat 'python HelloWorld.py'
+                bat '"C:\\Users\\aradh\\AppData\\Local\\Python\\bin\\python.exe" HelloWorld.py'
             }
         }
     }
